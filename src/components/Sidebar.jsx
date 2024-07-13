@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 
 function Sidebar() {
   return (
-    <div className="Sidebar">
+    <div className="sidebar">
       <NavLink
         to="/"
         className={({ isActive }) => (isActive ? "selected" : "")}

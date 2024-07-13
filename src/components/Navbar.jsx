@@ -2,8 +2,9 @@ function Navbar () {
 
 
     return (
-        <div className="Navbar">
-            <h1>I am a apartmetns rental app</h1>
+        <div className="navbar">
+            <h1>Rent A Flat</h1>
+            <h2>The Apartment Rental App</h2>
         </div>
     )
 }
