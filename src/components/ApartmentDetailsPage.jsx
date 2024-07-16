@@ -1,64 +1,363 @@
 import { useParams, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import data from "../assets/data.json";
 
-function ApartmentDetailsPage() {
+function ApartmentDetailsPage({ apartments, setApartments }) {
   const { apartmentId } = useParams();
 
-  const apartmentProfile = data.find(
-    (apartment) => apartment.id === apartmentId
-  );
-  console.log("apartmentId -->", apartmentId);
+  // State to hold the editable profile
+  const [editableProfile, setEditableProfile] = useState({
+    name: "",
+    country: "",
+    city: "",
+    neighbourhood: "",
+    space: "",
+    description: "",
+    house_rules: "",
+    host_name: "",
+    host_since: "",
+    host_response_time: "",
+    property_type: "",
+    room_type: "",
+    accommodates: "",
+    bathrooms: "",
+    bedrooms: "",
+    beds: "",
+    price: "",
+    cleaning_fee: "",
+    review_scores_rating: "",
+    cancellation_policy: "",
+  });
+  // State to indicate if in editing mode
+  const [isEditing, setIsEditing] = useState(false);
+
+  useEffect(() => {
+    // Find the apartment to edit based on apartmentId
+    const apartment = apartments.find(
+      (apartment) => apartment.id === apartmentId
+    );
+    setEditableProfile(apartment);
+  }, [apartmentId, apartments]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setEditableProfile({
+      ...editableProfile,
+      [name]: value,
+    });
+  };
+
+  const handleSave = () => {
+    // Update the apartment in the apartments array
+    const updatedApartments = apartments.map((apartment) =>
+      apartment.id === editableProfile.id ? editableProfile : apartment
+    );
+
+    // Update state with the updated apartments array
+    setApartments(updatedApartments);
+
+    // Simulate saving changes to backend (replace with actual API call)
+    // For simplicity, assume data is updated directly in this demo
+    setIsEditing(false); // Exit editing mode
+  };
 
   return (
     <div>
-      <h1>{apartmentProfile.name}</h1>
-      <p>Country: {apartmentProfile.country}</p>
-      <p>City: {apartmentProfile.city}</p>
-      <p>Neighbourhood: {apartmentProfile.neighbourhood}</p>
-      <p>Name: {apartmentProfile.name}</p>
-      <p>Space: {apartmentProfile.space}</p>
-      <p>Description: {apartmentProfile.description}</p>
-      <p>House rules: {apartmentProfile.house_rules}</p>
-      <p>Host name: {apartmentProfile.host_name}</p>
-      <p>Host since: {apartmentProfile.host_since}</p>
-      <p>Host_response_time: {apartmentProfile.host_response_time}</p>
-      <p>Property Type: {apartmentProfile.property_type}</p>
-      <p>Room Type: {apartmentProfile.room_type}</p>
-      <p>Accommodates: {apartmentProfile.accommodates}</p>
-      <p>Bathrooms: {apartmentProfile.bathrooms}</p>
-      <p>Bedrooms: {apartmentProfile.bedrooms}</p>
-      <p>Beds: {apartmentProfile.beds}</p>
-      <p>Price: {apartmentProfile.price}</p>
-      <p>Bathrooms: {apartmentProfile.bathrooms}</p>
-      <p>Cleaning fee: {apartmentProfile.cleaning_fee}</p>
-      <p>Review Scores Rating: {apartmentProfile.review_scores_rating}</p>
-      <p>Cancellation Policy: {apartmentProfile.cancellation_policy}</p>
+      {editableProfile && (
+        <div>
+          <h1>
+            {isEditing ? (
+              <input
+                type="text"
+                name="name"
+                value={editableProfile.name}
+                onChange={handleChange}
+              />
+            ) : (
+              editableProfile.name
+            )}
+          </h1>
+          <p>
+            Country:{" "}
+            {isEditing ? (
+              <select
+                name="country"
+                value={editableProfile.country}
+                onChange={handleChange}
+              >
+                <option value="">-- Choose --</option>
+                <option value="Spain">Spain</option>
+                <option value="Germany">Germany</option>
+                <option value="France">France</option>
+                {/* Add more options as needed */}
+              </select>
+            ) : (
+              editableProfile.country
+            )}
+          </p>
+          <p>
+            City:{" "}
+            {isEditing ? (
+              <select
+                name="city"
+                value={editableProfile.city}
+                onChange={handleChange}
+              >
+                <option value="">-- Choose --</option>
+                <option value="Madrid">Madrid</option>
+                <option value="Berlin">Berlin</option>
+                <option value="Paris">Paris</option>
+                {/* Add more options as needed */}
+              </select>
+            ) : (
+              editableProfile.city
+            )}
+          </p>
+          <p>
+            Neighbourhood:{" "}
+            {isEditing ? (
+              <input
+                type="text"
+                name="neighbourhood"
+                value={editableProfile.neighbourhood}
+                onChange={handleChange}
+              />
+            ) : (
+              editableProfile.neighbourhood
+            )}
+          </p>
+          <p>
+            Space:{" "}
+            {isEditing ? (
+              <input
+                type="text"
+                name="space"
+                value={editableProfile.space}
+                onChange={handleChange}
+              />
+            ) : (
+              editableProfile.space
+            )}
+          </p>
+          <p>
+            Description:{" "}
+            {isEditing ? (
+              <textarea
+                name="description"
+                value={editableProfile.description}
+                onChange={handleChange}
+              />
+            ) : (
+              editableProfile.description
+            )}
+          </p>
+          <p>
+            House rules:{" "}
+            {isEditing ? (
+              <textarea
+                name="house_rules"
+                value={editableProfile.house_rules}
+                onChange={handleChange}
+              />
+            ) : (
+              editableProfile.house_rules
+            )}
+          </p>
+          <p>
+            Host name:{" "}
+            {isEditing ? (
+              <input
+                type="text"
+                name="host_name"
+                value={editableProfile.host_name}
+                onChange={handleChange}
+              />
+            ) : (
+              editableProfile.host_name
+            )}
+          </p>
+          <p>
+            Host since:{" "}
+            {isEditing ? (
+              <input
+                type="text"
+                name="host_since"
+                value={editableProfile.host_since}
+                onChange={handleChange}
+              />
+            ) : (
+              editableProfile.host_since
+            )}
+          </p>
+          <p>
+            Host response time:{" "}
+            {isEditing ? (
+              <input
+                type="text"
+                name="host_response_time"
+                value={editableProfile.host_response_time}
+                onChange={handleChange}
+              />
+            ) : (
+              editableProfile.host_response_time
+            )}
+          </p>
+          <p>
+            Property Type:{" "}
+            {isEditing ? (
+              <select
+                name="property_type"
+                value={editableProfile.property_type}
+                onChange={handleChange}
+              >
+                <option value="">-- Choose --</option>
+                <option value="Apartment">Apartment</option>
+                <option value="Loft">Loft</option>
+                <option value="Other">Other</option>
+                {/* Add more options as needed */}
+              </select>
+            ) : (
+              editableProfile.property_type
+            )}
+          </p>
+          <p>
+            Room Type:{" "}
+            {isEditing ? (
+              <select
+                name="room_type"
+                value={editableProfile.room_type}
+                onChange={handleChange}
+              >
+                <option value="">-- Choose --</option>
+                <option value="Entire home/apt">Entire home/apt</option>
+                <option value="Private room">Private room</option>
+                <option value="Shared room">Shared room</option>
+                {/* Add more options as needed */}
+              </select>
+            ) : (
+              editableProfile.room_type
+            )}
+          </p>
+          <p>
+            Accommodates:{" "}
+            {isEditing ? (
+              <input
+                type="text"
+                name="accommodates"
+                value={editableProfile.accommodates}
+                onChange={handleChange}
+              />
+            ) : (
+              editableProfile.accommodates
+            )}
+          </p>
+          <p>
+            Bathrooms:{" "}
+            {isEditing ? (
+              <input
+                type="text"
+                name="bathrooms"
+                value={editableProfile.bathrooms}
+                onChange={handleChange}
+              />
+            ) : (
+              editableProfile.bathrooms
+            )}
+          </p>
+          <p>
+            Bedrooms:{" "}
+            {isEditing ? (
+              <input
+                type="text"
+                name="bedrooms"
+                value={editableProfile.bedrooms}
+                onChange={handleChange}
+              />
+            ) : (
+              editableProfile.bedrooms
+            )}
+          </p>
+          <p>
+            Beds:{" "}
+            {isEditing ? (
+              <input
+                type="text"
+                name="beds"
+                value={editableProfile.beds}
+                onChange={handleChange}
+              />
+            ) : (
+              editableProfile.beds
+            )}
+          </p>
+          <p>
+            Price:{" "}
+            {isEditing ? (
+              <input
+                type="text"
+                name="price"
+                value={editableProfile.price}
+                onChange={handleChange}
+              />
+            ) : (
+              editableProfile.price
+            )}
+          </p>
+          <p>
+            Cleaning Fee:{" "}
+            {isEditing ? (
+              <input
+                type="text"
+                name="cleaning_fee"
+                value={editableProfile.cleaning_fee}
+                onChange={handleChange}
+              />
+            ) : (
+              editableProfile.cleaning_fee
+            )}
+          </p>
+          <p>
+            Review Scores Rating:{" "}
+            {isEditing ? (
+              <input
+                type="text"
+                name="review_scores_rating"
+                value={editableProfile.review_scores_rating}
+                onChange={handleChange}
+              />
+            ) : (
+              editableProfile.review_scores_rating
+            )}
+          </p>
+          <p>
+            Cancellation Policy:{" "}
+            {isEditing ? (
+              <select
+                name="cancellation_policy"
+                value={editableProfile.cancellation_policy}
+                onChange={handleChange}
+              >
+                <option value="">-- Choose --</option>
+                <option value="flexible">Flexible</option>
+                <option value="moderate">Moderate</option>
+                <option value="strict">Strict</option>
+                {/* Add more options as needed */}
+              </select>
+            ) : (
+              editableProfile.cancellation_policy
+            )}
+          </p>
 
-      <Link to="/">Back</Link>
+          {isEditing ? (
+            <button onClick={handleSave}>Save</button>
+          ) : (
+            <button onClick={() => setIsEditing(true)}>Edit</button>
+          )}
+          <Link to="/">Back</Link>
+        </div>
+      )}
     </div>
   );
 }
 
 export default ApartmentDetailsPage;
-
-// "id": "6221624",
-//     "country": "Spain",
-//     "city": "Madrid",
-//     "neighbourhood": null,
-//     "name": "Marzo Best Offer Madrid PUERTA DEL SOL LM7",
-//     "space": "Perfecta ubicaci\u00f3n para conocer toda la oferta cultural que ofrece Madrid (Museo del Prado, Museo Thyssen-Bornemisza, Museo Reina Sof\u00eda, Palacio Real\u2026) y pasear por la Gran V\u00eda, e incluso ver alguno de los fant\u00e1sticos espect\u00e1culos de sus teatros y cines. Adem\u00e1s, est\u00e1 muy cerca del Parque del Retiro, pulm\u00f3n de la capital, en el cual puede pasar un rato agradable disfrutando de sus terrazas, dando una vuelta en barca por su estanque, tomando el sol, disfrutar los patines o en bicicleta. Piso recientemente reformado y decorado por un prestigioso equipo de interiorismo, cuenta con dos habitaciones c\u00f3modas, cocina independiente y ba\u00f1o. La casa es realmente acogedora, la hemos decorado con todo nuestro cari\u00f1o para que sea como un peque\u00f1o para\u00edso donde nuestros hu\u00e9spedes puedan relajarse y sentirse como en casa.",
-//     "description": "Ubicado en estupenda calle situada en una de las zonas m\u00e1s elegantes de la ciudad, cerca de la Plaza de la Cibeles, uno de los monumentos m\u00e1s importantes de Madrid, y a pasos de la Puerta del Sol, la Plaza Mayor, la Gran V\u00eda, y Retiro Aire Acondicionado reci\u00e9n instalado Perfecta ubicaci\u00f3n para conocer toda la oferta cultural que ofrece Madrid (Museo del Prado, Museo Thyssen-Bornemisza, Museo Reina Sof\u00eda, Palacio Real\u2026) y pasear por la Gran V\u00eda, e incluso ver alguno de los fant\u00e1sticos espect\u00e1culos de sus teatros y cines. Adem\u00e1s, est\u00e1 muy cerca del Parque del Retiro, pulm\u00f3n de la capital, en el cual puede pasar un rato agradable disfrutando de sus terrazas, dando una vuelta en barca por su estanque, tomando el sol, disfrutar los patines o en bicicleta. Piso recientemente reformado y decorado por un prestigioso equipo de interiorismo, cuenta con dos habitaciones c\u00f3modas, cocina independiente y ba\u00f1o. La casa es realmente acogedora, la hemos decorado con todo nuestro cari\u00f1o para que sea com",
-//     "house_rules": "El apartamento se ha realizado con mucho cari\u00f1o para que tu estancia en \u00e9l sea muy agradable ES OBLIGATORIO PRESENTAR DOCUMENTACI\u00d3N OFICIAL DE TODOS LOS OCUPANTES El horario de entrada ser\u00e1 desde las 15h a las 21h. A partir de las 21h se cobrar\u00e1 un suplemento de 30\u20ac, que se abonar\u00e1 a la llegada a la entrega de las llaves. Entrar antes de las 15h puede conllevar un suplemento El horario de salida ser\u00e1 antes de las 11h, si deseas abandonar el apartamento m\u00e1s tarde deber\u00e1s solicitarlo con antelaci\u00f3n y en base a la disponibilidad estaremos encantados de ayudarte. Puede conllevar un suplemento Recuerda que el apartamento debe ser devuelto en las mismas condiciones de orden y limpieza que a tu llegada Ruego que saques la basura todos los d\u00edas, con especial cuidado en los meses de verano Es importante respetar el n\u00famero de personas que ocupar\u00e1n el apartamento, cuyo n\u00famero nunca debe de sobrepasar el estipulado en la reserva. En caso contrario se pedir\u00e1 al cliente el desalojo inmediato del apa",
-//     "host_name": "Leticia&Fer",
-//     "host_since": "2015-02-10",
-//     "host_response_time": "within an hour",
-//     "property_type": "Apartment",
-//     "room_type": "Entire home/apt",
-//     "accommodates": 6,
-//     "bathrooms": 1.0,
-//     "bedrooms": 2,
-//     "beds": 3,
-//     "price": 84,
-//     "cleaning_fee": 50,
-//     "review_scores_rating": 84,
-//     "cancellation_policy": "strict",

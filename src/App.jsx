@@ -1,39 +1,49 @@
-
-import {Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 
-
-import './App.css'
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Sidebar from './components/Sidebar';
+import "./App.css";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Sidebar from "./components/Sidebar";
 import ApartmentDetailsPage from "./components/ApartmentDetailsPage";
-
+import data from "./assets/data.json";
+import { useState } from "react";
 
 function App() {
-
+  const [apartments, setApartments] = useState(data);
 
   return (
     <div className="app">
       <Navbar />
       <div className="main">
-      <Sidebar />
-    
-      <div className="content">
-        <Routes >
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/apartment/:apartmentId" element={<ApartmentDetailsPage />}/>
-      </Routes>
-      </div>
+        <Sidebar />
+
+        <div className="content">
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Home apartments={apartments} setApartments={setApartments} />
+              }
+            />
+            <Route path="/about" element={<About />} />
+            <Route
+              path="/apartment/:apartmentId"
+              element={
+                <ApartmentDetailsPage
+                  apartments={apartments}
+                  setApartments={setApartments}
+                />
+              }
+            />
+          </Routes>
+        </div>
       </div>
 
       <Footer />
     </div>
-
-
-  )
+  );
 }
 
-export default App
+export default App;
