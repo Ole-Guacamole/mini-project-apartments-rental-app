@@ -9,6 +9,7 @@ import Sidebar from "./components/Sidebar";
 import ApartmentDetailsPage from "./components/ApartmentDetailsPage";
 import data from "./assets/data.json";
 import { useState } from "react";
+import ApartmentDetailsEditPage from "./pages/ApartmentDetailsEditPage";
 
 function App() {
   const [apartments, setApartments] = useState(data);
@@ -32,6 +33,15 @@ function App() {
               path="/apartment/:apartmentId"
               element={
                 <ApartmentDetailsPage
+                  apartments={apartments}
+                  setApartments={setApartments}
+                />
+              }
+            />
+            <Route
+              path="/apartment/:apartmentId/edit"
+              element={
+                <ApartmentDetailsEditPage
                   apartments={apartments}
                   setApartments={setApartments}
                 />

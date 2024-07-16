@@ -351,7 +351,9 @@ function ApartmentDetailsPage({ apartments, setApartments }) {
           {isEditing ? (
             <button onClick={handleSave}>Save</button>
           ) : (
-            <button onClick={() => setIsEditing(true)}>Edit</button>
+            <button>
+              <Link to={`/apartment/${apartmentId}/edit`}> Edit </Link>
+            </button>
           )}
           <Link to="/">Back</Link>
         </div>
