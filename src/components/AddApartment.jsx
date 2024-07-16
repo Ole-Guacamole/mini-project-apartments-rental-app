@@ -38,11 +38,14 @@ function AddApartment(props) {
   const handleCleaningFeeInput = (e) => setCleaningFee(e.target.value);
   const handleCancellationPolicy = (e) => setCancellationPolicy(e.target.value);
 
+  let today = new Date().toISOString().slice(0, 10)
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const newApartment = {
-      id,
+      id: Math.floor(Math.random() * 899999 + 100000),
       country,
       city,
       neighbourhood,
@@ -51,8 +54,8 @@ function AddApartment(props) {
       description,
       house_rules,
       host_name,
-      host_since,
-      host_response_time,
+      host_since: `${today}`,
+      // host_response_time,
       property_type,
       room_type,
       accomodates,
@@ -61,9 +64,9 @@ function AddApartment(props) {
       beds,
       price,
       cleaning_fee,
-      review_scores_rating,
+      // review_scores_rating,
       cancellation_policy,
-      picture_url,
+      // picture_url,
     };
 
     //setStudents([...students, newStudent]);
@@ -117,6 +120,8 @@ function AddApartment(props) {
           </select>
         </label>
 
+
+        <div>
         <label>In which neighbourhood is your space located? </label>
         <input
           type="text"
@@ -124,7 +129,9 @@ function AddApartment(props) {
           value={neighbourhood}
           onChange={handleNeighbourhoodInput}
         />
+        </div>
 
+        <div>
         <label>If your apartment had a headline, what would it be? </label>
         <input
           type="text"
@@ -132,18 +139,20 @@ function AddApartment(props) {
           value={name}
           onChange={handleNameInput}
         />
-
+        </div>
+<div>
         <label>Describe the most important facts about your space in few words: </label>
         <input
-          type="text"
+          type="textarea"
           name="space"
           value={space}
           onChange={handleSpaceInput}
         />
+        </div>
 
         <label>Please describe your place for rent in detail</label>
         <input
-          type="text"
+          type="textarea"
           name="description"
           value={description}
           onChange={handleDescriptionInput}
@@ -151,7 +160,7 @@ function AddApartment(props) {
 
         <label>Are there any house rules guests will have to follow? </label>
         <input
-          type="text"
+          type="textarea"
           name="house_rules"
           value={house_rules}
           onChange={handleHouseRulesInput}

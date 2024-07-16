@@ -1,4 +1,6 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
+import homeimg from "../assets/home.png";
+import aboutimg from "../assets/about.png";
 
 function Sidebar() {
   return (
@@ -7,14 +9,15 @@ function Sidebar() {
         to="/"
         className={({ isActive }) => (isActive ? "selected" : "")}
       >
-        Home
+        <img src={homeimg} className="icon" alt="home"></img>
       </NavLink>
 
       <NavLink
         to="/about"
         className={({ isActive }) => (isActive ? "selected" : "")}
       >
-        About
+        <img src={aboutimg} className="icon" alt="about"></img>
+      
       </NavLink>
     </div>
   );

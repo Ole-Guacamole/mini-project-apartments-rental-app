@@ -19,7 +19,8 @@
 }
 
 .navbar {
-  background-color: lightblue;
+  border-bottom: 1px solid black;
+  margin-bottom: 7px;
   height: 7vh;
   width: 100%;
   display: flex;
@@ -27,9 +28,11 @@
   align-items: center;
 }
 
+
+
 .main {
   height: 90vh;
-  width: 100%;
+  width: 90%;
   display: flex;
   flex-direction: row;
 }
@@ -39,7 +42,17 @@
   width: 20%;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   justify-content: flex-start;
+  
+  margin: 7px;
+
+}
+
+.sidebar .icon {
+  background-color: rgb(225, 225, 225);
+  border-radius: 7px;
+
 }
 
 .content {
@@ -61,6 +74,27 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.apartment-card {
+  background-color: none;
+  border-radius: 7px;
+  border: 1px solid black;
+  margin: 10px 0;
+}
+
+.numbers-bar {
+  border-top: 1px solid black;
+  margin-top: 3px;
+  padding-top: 3px;
+  font-style: italic;
+  text-align: center;
+  font-weight: bold;
+  font-size: small;
+}
+
+.apartment-card-right {
+ padding: 10px;
 }
 
 .add-apartment {
@@ -88,4 +122,34 @@
   border: none;
   padding: 3px;
   font-weight: bold;
+}
+
+/* .btn-delete {
+  
+}*/
+
+.labels {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+ 
+
+}
+
+.label {
+  background-color: rgb(82, 82, 82);
+  color: white;
+  border-radius: 7px;
+  padding: 1px 7px;
+  margin: 3px;
+  font-size: smaller;
+  text-transform: uppercase;
+}
+
+.entire-home {
+  background-color: rgb(254, 80, 80);
+}
+
+.top-review-score {
+  background-color: rgb(37, 181, 46);
 }

@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function ApartmentCard(props) {
   const { apartment, clickToDelete } = props;
-  /* 
+  
   const renderLabels = () => {
     const labels = [];
 
@@ -10,18 +11,22 @@ function ApartmentCard(props) {
       labels.push(<span key="great-deal" className="label great-deal">Great Deal</span>);
     }
 
-    if (review_scores_rating >= 90) {
-      labels.push(<span key="top-ranking" className="label top-ranking">Top Rating</span>);
+    if (apartment.review_scores_rating >= 70) {
+      labels.push(<span key="top-review-score" className="label top-review-score">Top Reviews</span>);
     }
 
     if (apartment.room_type === "Entire home/apt" ) {
       labels.push(<span key="entire-home" className="label entire-home">Entire Apartment</span>);
     }
 
+    if (apartment.cancellation_policy === "flexible" ) {
+      labels.push(<span key="flexible-cancellation" className="label flexible-cancellation">flexible cancellation</span>);
+    }
+
     return labels;
   };
 
-*/
+
 
   return (
     <div className="apartment-card">
@@ -29,20 +34,26 @@ function ApartmentCard(props) {
         <p className="dachzeile">
           {apartment.country} / {apartment.city} / {apartment.neighbourhood}
         </p>
-        <h3>{apartment.name}</h3>
+        <Link to={`/apartment/${apartment.id}`}><h3>{apartment.name}</h3> </Link>
         <p>
           {apartment.property_type} / {apartment.room_type}
         </p>
         <p>
           <strong>Price:</strong> {apartment.price} €
         </p>
-        <p>{apartment.description}</p>
+        <p>
+          {apartment.space}
+        </p>
 
-        {/*<div>
+        
+
+        <p className="numbers-bar">Max {apartment.accommodates} persons | Bedrooms: {apartment.bedrooms} | Beds: {apartment.beds} | Bathrooms: {apartment.bathrooms}</p>
+        <div className="labels">
           {renderLabels()}
-        </div>*/}
-
-        <br></br>
+        
+        </div>
+      
+        
         <button
           onClick={() => clickToDelete(apartment.id)}
           className="btn-delete"

@@ -21,7 +21,7 @@ function ApartmentsList() {
   // Function to add new apartment card to the list
   const addNewApartment = (newApartment) => {
     // Create a new array
-    const updatedApartments = [newApartment, ...Apartments];
+    const updatedApartments = [newApartment, ...apartments];
    
     setApartments(updatedApartments);
   };
@@ -34,7 +34,7 @@ function ApartmentsList() {
       
       <AddApartment addApartment={addNewApartment} />
       
-      {apartments.slice(0,10).map(apartment => {
+      {apartments/*.slice(0,10)*/.map(apartment => {
         return <ApartmentCard key={apartment.id} apartment={apartment} clickToDelete={deleteApartment} />;
       })}
     </div>

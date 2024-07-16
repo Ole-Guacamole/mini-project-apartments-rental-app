@@ -7,6 +7,7 @@ export default function Home () {
         <>
             <div className="Home">Home sweet home</div>
             <ApartmentsList />
+            
         </>
     )
 }

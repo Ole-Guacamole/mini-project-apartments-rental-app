@@ -8,6 +8,7 @@ import './App.css'
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Sidebar from './components/Sidebar';
+import ApartmentDetailsPage from "./components/ApartmentDetailsPage";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Routes >
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/apartment/:apartmentId" element={<ApartmentDetailsPage />}/>
       </Routes>
       </div>
       </div>
