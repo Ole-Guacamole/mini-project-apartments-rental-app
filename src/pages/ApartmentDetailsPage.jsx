@@ -62,7 +62,7 @@ function ApartmentDetailsPage({ apartments, setApartments }) {
   };
 
   return (
-    <div>
+    <div className="details-page">
       {editableProfile && (
         <div>
           <h1>
@@ -78,7 +78,7 @@ function ApartmentDetailsPage({ apartments, setApartments }) {
             )}
           </h1>
           <p>
-            Country:{" "}
+          <strong>Country:</strong>{" "}
             {isEditing ? (
               <select
                 name="country"
@@ -96,7 +96,7 @@ function ApartmentDetailsPage({ apartments, setApartments }) {
             )}
           </p>
           <p>
-            City:{" "}
+            <strong>City:</strong>{" "}
             {isEditing ? (
               <select
                 name="city"
@@ -114,7 +114,7 @@ function ApartmentDetailsPage({ apartments, setApartments }) {
             )}
           </p>
           <p>
-            Neighbourhood:{" "}
+            <strong>Neighbourhood:</strong>|{" "}
             {isEditing ? (
               <input
                 type="text"
@@ -127,7 +127,7 @@ function ApartmentDetailsPage({ apartments, setApartments }) {
             )}
           </p>
           <p>
-            Space:{" "}
+            <strong>Space:</strong>{" "}
             {isEditing ? (
               <input
                 type="text"
@@ -140,7 +140,7 @@ function ApartmentDetailsPage({ apartments, setApartments }) {
             )}
           </p>
           <p>
-            Description:{" "}
+          <strong>Description:</strong>{" "}
             {isEditing ? (
               <textarea
                 name="description"
@@ -152,7 +152,7 @@ function ApartmentDetailsPage({ apartments, setApartments }) {
             )}
           </p>
           <p>
-            House rules:{" "}
+          <strong>House rules:</strong>{" "}
             {isEditing ? (
               <textarea
                 name="house_rules"
@@ -164,7 +164,7 @@ function ApartmentDetailsPage({ apartments, setApartments }) {
             )}
           </p>
           <p>
-            Host name:{" "}
+          <strong>Host name:</strong>{" "}
             {isEditing ? (
               <input
                 type="text"
@@ -177,7 +177,7 @@ function ApartmentDetailsPage({ apartments, setApartments }) {
             )}
           </p>
           <p>
-            Host since:{" "}
+          <strong>Host since:</strong>{" "}
             {isEditing ? (
               <input
                 type="text"
@@ -190,7 +190,7 @@ function ApartmentDetailsPage({ apartments, setApartments }) {
             )}
           </p>
           <p>
-            Host response time:{" "}
+          <strong>Host response time:</strong>{" "}
             {isEditing ? (
               <input
                 type="text"
@@ -203,7 +203,7 @@ function ApartmentDetailsPage({ apartments, setApartments }) {
             )}
           </p>
           <p>
-            Property Type:{" "}
+          <strong>Property Type:</strong>{" "}
             {isEditing ? (
               <select
                 name="property_type"
@@ -221,7 +221,7 @@ function ApartmentDetailsPage({ apartments, setApartments }) {
             )}
           </p>
           <p>
-            Room Type:{" "}
+          <strong>Room Type:</strong>{" "}
             {isEditing ? (
               <select
                 name="room_type"
@@ -239,7 +239,7 @@ function ApartmentDetailsPage({ apartments, setApartments }) {
             )}
           </p>
           <p>
-            Accommodates:{" "}
+          <strong>Accommodates:</strong>{" "}
             {isEditing ? (
               <input
                 type="text"
@@ -252,7 +252,7 @@ function ApartmentDetailsPage({ apartments, setApartments }) {
             )}
           </p>
           <p>
-            Bathrooms:{" "}
+          <strong>Bathrooms:</strong>{" "}
             {isEditing ? (
               <input
                 type="text"
@@ -265,7 +265,7 @@ function ApartmentDetailsPage({ apartments, setApartments }) {
             )}
           </p>
           <p>
-            Bedrooms:{" "}
+          <strong>Bedrooms:</strong>{" "}
             {isEditing ? (
               <input
                 type="text"
@@ -278,7 +278,7 @@ function ApartmentDetailsPage({ apartments, setApartments }) {
             )}
           </p>
           <p>
-            Beds:{" "}
+          <strong>Beds:</strong>{" "}
             {isEditing ? (
               <input
                 type="text"
@@ -291,7 +291,7 @@ function ApartmentDetailsPage({ apartments, setApartments }) {
             )}
           </p>
           <p>
-            Price:{" "}
+          <strong>Price:</strong>{" "}
             {isEditing ? (
               <input
                 type="text"
@@ -304,7 +304,7 @@ function ApartmentDetailsPage({ apartments, setApartments }) {
             )}
           </p>
           <p>
-            Cleaning Fee:{" "}
+          <strong>Cleaning Fee:</strong>{" "}
             {isEditing ? (
               <input
                 type="text"
@@ -317,7 +317,7 @@ function ApartmentDetailsPage({ apartments, setApartments }) {
             )}
           </p>
           <p>
-            Review Scores Rating:{" "}
+          <strong>Review Scores Rating:</strong>{" "}
             {isEditing ? (
               <input
                 type="text"
@@ -330,7 +330,7 @@ function ApartmentDetailsPage({ apartments, setApartments }) {
             )}
           </p>
           <p>
-            Cancellation Policy:{" "}
+          <strong>Cancellation Policy:</strong>{" "}
             {isEditing ? (
               <select
                 name="cancellation_policy"

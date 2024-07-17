@@ -3,16 +3,19 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 
 import "./App.css";
+import ErrorPage from "./pages/ErrorPage"; 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Sidebar from "./components/Sidebar";
-import ApartmentDetailsPage from "./components/ApartmentDetailsPage";
+import ApartmentDetailsPage from "./pages/ApartmentDetailsPage";
 import data from "./assets/data.json";
 import { useState } from "react";
 import ApartmentDetailsEditPage from "./pages/ApartmentDetailsEditPage";
 
 function App() {
   const [apartments, setApartments] = useState(data);
+
+  
 
   return (
     <div className="app">
@@ -47,6 +50,13 @@ function App() {
                 />
               }
             />
+            <Route
+              path="*"
+              element={ 
+              <ErrorPage 
+              /> 
+              }
+            /> 
           </Routes>
         </div>
       </div>

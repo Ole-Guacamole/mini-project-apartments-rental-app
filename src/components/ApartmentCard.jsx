@@ -60,6 +60,14 @@ function ApartmentCard(props) {
         >
           Delete
         </button>
+
+        <button
+          onClick={() => clickToDelete(apartment.id)}
+          className="btn-delete"
+        >
+          Delete
+        </button>
+        
       </div>
     </div>
   );

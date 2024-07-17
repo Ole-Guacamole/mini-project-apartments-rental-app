@@ -1,9 +1,11 @@
+import logo from "../assets/logo.png"
+
 function Navbar () {
 
 
     return (
         <div className="navbar">
-            <h1>Rent A Flat</h1>
+            <img src={logo} />
             <h2>The Apartment Rental App</h2>
         </div>
     )
