@@ -1,9 +1,13 @@
+import { FaHeart, FaHeartBroken } from "react-icons/fa";
 import React from "react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 function ApartmentCard(props) {
-  const { apartment, clickToDelete } = props;
+  const { apartment, clickToDelete, handleFavourite } = props;
   
+  const [favourited, setFavourited] = useState(false);
+
   const renderLabels = () => {
     const labels = [];
 
@@ -53,7 +57,7 @@ function ApartmentCard(props) {
         
         </div>
       
-        
+
         <button
           onClick={() => clickToDelete(apartment.id)}
           className="btn-delete"
@@ -62,11 +66,12 @@ function ApartmentCard(props) {
         </button>
 
         <button
-          onClick={() => clickToDelete(apartment.id)}
-          className="btn-delete"
-        >
-          Delete
-        </button>
+            onClick={() => (handleFavourite(apartment.id), setFavourited(!favourited))}
+            type="button"
+            className="card__button"
+          >
+            {favourited ? <FaHeartBroken /> : <FaHeart />}
+          </button>
         
       </div>
     </div>

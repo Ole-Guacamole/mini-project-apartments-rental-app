@@ -3,41 +3,73 @@ import ApartmentCard from "./ApartmentCard";
 import AddApartment from "./AddApartment";
 
 function ApartmentsList({ apartments, setApartments }) {
-  // Function to delete apartment card from List
-  const deleteApartment = (apartmentId) => {
-    const filteredApartments = apartments.filter((apartment) => {
-      return apartment.id !== apartmentId;
-    });
+  // State to manage favourite apartments
+  const [favourites, setFavourites] = useState([]);
 
-    setApartments(filteredApartments);
+  // Function to handle adding/removing from favourites
+  const handleFavourite = (apartmentId) => {
+    const apartment = apartments.find((apt) => apt.id === apartmentId);
+    if (!apartment) return;
+
+    if (favourites.includes(apartment)) {
+      setFavourites(favourites.filter((apt) => apt.id !== apartmentId));
+    } else {
+      setFavourites([...favourites, apartment]);
+    }
   };
 
-  // Function to add new apartment card to the list
-  const addNewApartment = (newApartment) => {
-    // Create a new array
-    const updatedApartments = [newApartment, ...apartments];
+  // Function to delete an apartment from the list
+  const deleteApartment = (apartmentId) => {
+    const filteredApartments = apartments.filter((apt) => apt.id !== apartmentId);
+    setApartments(filteredApartments);
 
+    // Remove from favourites if present
+    if (favourites.find((apt) => apt.id === apartmentId)) {
+      setFavourites(favourites.filter((apt) => apt.id !== apartmentId));
+    }
+  };
+
+  // Function to add a new apartment to the list
+  const addNewApartment = (newApartment) => {
+    const updatedApartments = [newApartment, ...apartments];
     setApartments(updatedApartments);
   };
 
-  // Return Components
   return (
     <div className="apartments-list">
-      <h2>Apartments</h2>
+      
 
-      <AddApartment addApartment={addNewApartment} />
-
-      {apartments /*.slice(0,10)*/
-        .map((apartment) => {
-          return (
+      {favourites.length > 0 && (
+        <>
+          <h2 className="card__heading">Favourite Apartments</h2>
+          {favourites.map((apartment) => (
             <ApartmentCard
               key={apartment.id}
               apartment={apartment}
               setApartments={setApartments}
               clickToDelete={deleteApartment}
+              handleFavourite={handleFavourite}
+              isFavourite={true}
             />
-          );
-        })}
+          ))}
+        </>
+      )}
+
+      <AddApartment addApartment={addNewApartment} />
+
+      <h2>Apartments</h2>
+      {apartments.map((apartment) => (
+        <ApartmentCard
+          key={apartment.id}
+          apartment={apartment}
+          setApartments={setApartments}
+          clickToDelete={deleteApartment}
+          handleFavourite={handleFavourite}
+          isFavourite={favourites.includes(apartment)}
+        />
+      ))}
+
+      
     </div>
   );
 }
