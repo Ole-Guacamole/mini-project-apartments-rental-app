@@ -100,6 +100,7 @@
   border-radius: 7px;
   border: 1px solid black;
   margin: 10px 0;
+  color: black;
 }
 .apartment-card-right {
   p {
@@ -107,6 +108,7 @@
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+    color: black;
     
   }
 }
@@ -170,7 +172,7 @@
 .labels {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: flex-start;
  
 
 }
@@ -217,4 +219,23 @@ flex-direction: column;
 
 button {
   cursor:pointer;
+}
+
+a:link, a:visited {
+  text-decoration: none;
+  color: white;
+ }
+
+h3 {
+  color:black;
+}
+
+.apartments-details-lower-all {
+display: flex;
+flex-direction: row;
+justify-content:flex start;
+}
+
+.apartments-details-lower {
+margin-right: 2em;
 }

@@ -31,27 +31,27 @@ export default function ApartmentDetailsEditPage({
   return (
     <form onSubmit={handleSubmit}>
       <div className="apartment-edit-form">
-      <p>Apartment name:</p>
-          <input
-            type="text"
-            name="name"
-            value={editableProfile.name}
-            onChange={handleChange}
-          />
-        
+        <p>Apartment name:</p>
+        <input
+          type="text"
+          name="name"
+          value={editableProfile.name}
+          onChange={handleChange}
+        />
+
         <p>Country</p>
-          <select
-            name="country"
-            value={editableProfile.country}
-            onChange={handleChange}
-          >
-            <option value="">-- Choose --</option>
-            <option value="Spain">Spain</option>
-            <option value="Germany">Germany</option>
-            <option value="France">France</option>
-            {/* Add more options as needed */}
-          </select>
-        
+        <select
+          name="country"
+          value={editableProfile.country}
+          onChange={handleChange}
+        >
+          <option value="">-- Choose --</option>
+          <option value="Spain">Spain</option>
+          <option value="Germany">Germany</option>
+          <option value="France">France</option>
+          {/* Add more options as needed */}
+        </select>
+
         <p>City: </p>
         <select
           name="city"
@@ -65,53 +65,53 @@ export default function ApartmentDetailsEditPage({
           {/* Add more options as needed */}
         </select>
         <p>Neighbourhood: </p>
-          <input
-            type="text"
-            name="neighbourhood"
-            value={editableProfile.neighbourhood}
-            onChange={handleChange}
-          />
-        
+        <input
+          type="text"
+          name="neighbourhood"
+          value={editableProfile.neighbourhood}
+          onChange={handleChange}
+        />
+
         <p> Space: </p>
-          <textarea
-            rows="8"
-            type="text"
-            name="space"
-            value={editableProfile.space}
-            onChange={handleChange}
-          />
-        
+        <textarea
+          rows="8"
+          type="text"
+          name="space"
+          value={editableProfile.space}
+          onChange={handleChange}
+        />
+
         <p> Description:</p>
-          <textarea
-            rows="10"
-            name="description"
-            value={editableProfile.description}
-            onChange={handleChange}
-          />
-        
+        <textarea
+          rows="10"
+          name="description"
+          value={editableProfile.description}
+          onChange={handleChange}
+        />
+
         <p> House rules:</p>
-          <textarea
-            rows="6"
-            name="house_rules"
-            value={editableProfile.house_rules}
-            onChange={handleChange}
-          />
-        
+        <textarea
+          rows="6"
+          name="house_rules"
+          value={editableProfile.house_rules}
+          onChange={handleChange}
+        />
+
         <p>Host name:</p>
-          <input
-            type="text"
-            name="host_name"
-            value={editableProfile.host_name}
-            onChange={handleChange}
-          />
-        
+        <input
+          type="text"
+          name="host_name"
+          value={editableProfile.host_name}
+          onChange={handleChange}
+        />
+
         <p>Host since:</p>
-          <input
-            type="text"
-            name="host_since"
-            value={editableProfile.host_since}
-            onChange={handleChange}
-          />
+        <input
+          type="text"
+          name="host_since"
+          value={editableProfile.host_since}
+          onChange={handleChange}
+        />
         <p>Response time:</p>
         <input
           type="text"
@@ -204,16 +204,17 @@ export default function ApartmentDetailsEditPage({
           <option value="strict">Strict</option>
           {/* Add more options as needed */}
         </select>
-        
-        
-        
-      
-      <button type="submit">submit</button>
+        <br></br>
+        <div className="buttons">
+          <button type="Submit">Submit</button>
 
-      <button>
-        <Link to={`/apartment/${apartmentId}`}>Back</Link>
-        </button>
+          <button>
+            <Link to={`/apartment/${apartmentId}`}>cancel</Link>
+          </button>
         </div>
+        <br></br>
+        <br></br>
+      </div>
     </form>
   );
 }

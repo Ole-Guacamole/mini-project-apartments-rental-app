@@ -20,7 +20,9 @@ function ApartmentsList({ apartments, setApartments }) {
 
   // Function to delete an apartment from the list
   const deleteApartment = (apartmentId) => {
-    const filteredApartments = apartments.filter((apt) => apt.id !== apartmentId);
+    const filteredApartments = apartments.filter(
+      (apt) => apt.id !== apartmentId
+    );
     setApartments(filteredApartments);
 
     // Remove from favourites if present
@@ -37,24 +39,24 @@ function ApartmentsList({ apartments, setApartments }) {
 
   return (
     <div className="apartments-list">
-      
+      <h2 className="card__heading">Favourite Apartments</h2>
+      <p className="favs">
+        {" "}
+        Add your favorite appartments here by clicking on the heart symbol on
+        their list entry to have easy access to them.
+      </p>
 
-    
-          <h2 className="card__heading">Favourite Apartments</h2>
-          <p className="favs"> Add your favorite appartments here by clicking on the heart symbol on their list entry to have easy access to them.</p>
+      {favourites.map((apartment) => (
+        <ApartmentCard
+          key={apartment.id}
+          apartment={apartment}
+          setApartments={setApartments}
+          clickToDelete={deleteApartment}
+          handleFavourite={handleFavourite}
+          isFavourite={true}
+        />
+      ))}
 
-          {favourites.map((apartment) => (
-            <ApartmentCard
-              key={apartment.id}
-              apartment={apartment}
-              setApartments={setApartments}
-              clickToDelete={deleteApartment}
-              handleFavourite={handleFavourite}
-              isFavourite={true}
-            />
-          ))}
-        
-      
       <h2>Add new apartment</h2>
       <AddApartment addApartment={addNewApartment} />
 
@@ -70,7 +72,8 @@ function ApartmentsList({ apartments, setApartments }) {
         />
       ))}
 
-      
+      <br></br>
+      <br></br>
     </div>
   );
 }
