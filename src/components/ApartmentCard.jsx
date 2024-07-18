@@ -71,8 +71,8 @@ function ApartmentCard(props) {
             onClick={() => (handleFavourite(apartment.id), setFavourited(!favourited))}
             type="button"
             className="card-button"
-{favourited ? <FaHeartBroken /> : <FaHeart />}          >
-            
+          >
+            {favourited ? <FaHeartBroken /> : <FaHeart />}
           </button>
           </div>
         
