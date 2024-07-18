@@ -97,7 +97,7 @@ function AddApartment(props) {
 
   return (
     <div className="add-apartment">
-      <h2>Add new apartment</h2>
+      {/*<h2>Add new apartment</h2>*/}
       <>Please fill out a few basic facts about the apartment you want to add.</>
       <form onSubmit={handleSubmit} className="add-apartment-form">
         <label>

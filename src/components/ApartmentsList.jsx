@@ -39,9 +39,10 @@ function ApartmentsList({ apartments, setApartments }) {
     <div className="apartments-list">
       
 
-      {favourites.length > 0 && (
-        <>
+    
           <h2 className="card__heading">Favourite Apartments</h2>
+          <p className="favs"> Add your favorite appartments here by clicking on the heart symbol on their list entry to have easy access to them.</p>
+
           {favourites.map((apartment) => (
             <ApartmentCard
               key={apartment.id}
@@ -52,9 +53,9 @@ function ApartmentsList({ apartments, setApartments }) {
               isFavourite={true}
             />
           ))}
-        </>
-      )}
-
+        
+      
+      <h2>Add new apartment</h2>
       <AddApartment addApartment={addNewApartment} />
 
       <h2>Apartments</h2>

@@ -35,13 +35,17 @@ function ApartmentCard(props) {
   return (
     <div className="apartment-card">
       <div className="apartment-card-right">
-        <p className="dachzeile">
+         <p className="dachzeile">
           {apartment.country} / {apartment.city} / {apartment.neighbourhood}
         </p>
         <Link to={`/apartment/${apartment.id}`}><h3>{apartment.name}</h3> </Link>
-        <p>
+        <div className="labels">
+          {renderLabels()}
+        
+        </div><p>
           {apartment.property_type} / {apartment.room_type}
         </p>
+       
         <p>
           <strong>Price:</strong> {apartment.price} €
         </p>
@@ -52,26 +56,25 @@ function ApartmentCard(props) {
         
 
         <p className="numbers-bar">Max {apartment.accommodates} persons | Bedrooms: {apartment.bedrooms} | Beds: {apartment.beds} | Bathrooms: {apartment.bathrooms}</p>
-        <div className="labels">
-          {renderLabels()}
-        
-        </div>
       
-
+      
+        <div className="card-buttons">
         <button
           onClick={() => clickToDelete(apartment.id)}
-          className="btn-delete"
+          className="card-button"
+      
         >
-          Delete
+          DELETE
         </button>
 
         <button
             onClick={() => (handleFavourite(apartment.id), setFavourited(!favourited))}
             type="button"
-            className="card__button"
-          >
-            {favourited ? <FaHeartBroken /> : <FaHeart />}
+            className="card-button"
+{favourited ? <FaHeartBroken /> : <FaHeart />}          >
+            
           </button>
+          </div>
         
       </div>
     </div>

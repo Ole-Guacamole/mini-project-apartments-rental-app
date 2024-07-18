@@ -30,16 +30,16 @@ export default function ApartmentDetailsEditPage({
   };
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <h1>
+      <div className="apartment-edit-form">
+      <p>Apartment name:</p>
           <input
             type="text"
             name="name"
             value={editableProfile.name}
             onChange={handleChange}
           />
-        </h1>
-        <p>
+        
+        <p>Country</p>
           <select
             name="country"
             value={editableProfile.country}
@@ -51,7 +51,8 @@ export default function ApartmentDetailsEditPage({
             <option value="France">France</option>
             {/* Add more options as needed */}
           </select>
-        </p>
+        
+        <p>City: </p>
         <select
           name="city"
           value={editableProfile.city}
@@ -63,58 +64,62 @@ export default function ApartmentDetailsEditPage({
           <option value="Paris">Paris</option>
           {/* Add more options as needed */}
         </select>
-        <p>
+        <p>Neighbourhood: </p>
           <input
             type="text"
             name="neighbourhood"
             value={editableProfile.neighbourhood}
             onChange={handleChange}
           />
-        </p>
-        <p>
-          <input
+        
+        <p> Space: </p>
+          <textarea
+            rows="8"
             type="text"
             name="space"
             value={editableProfile.space}
             onChange={handleChange}
           />
-        </p>
-        <p>
+        
+        <p> Description:</p>
           <textarea
+            rows="10"
             name="description"
             value={editableProfile.description}
             onChange={handleChange}
           />
-        </p>
-        <p>
+        
+        <p> House rules:</p>
           <textarea
+            rows="6"
             name="house_rules"
             value={editableProfile.house_rules}
             onChange={handleChange}
           />
-        </p>
-        <p>
+        
+        <p>Host name:</p>
           <input
             type="text"
             name="host_name"
             value={editableProfile.host_name}
             onChange={handleChange}
           />
-        </p>
-        <p>
+        
+        <p>Host since:</p>
           <input
             type="text"
             name="host_since"
             value={editableProfile.host_since}
             onChange={handleChange}
           />
-        </p>
+        <p>Response time:</p>
         <input
           type="text"
           name="host_response_time"
           value={editableProfile.host_response_time}
           onChange={handleChange}
         />
+        <p>Property type:</p>
         <select
           name="property_type"
           value={editableProfile.property_type}
@@ -126,6 +131,7 @@ export default function ApartmentDetailsEditPage({
           <option value="Other">Other</option>
           {/* Add more options as needed */}
         </select>
+        <p>Room type:</p>
         <select
           name="room_type"
           value={editableProfile.room_type}
@@ -137,48 +143,56 @@ export default function ApartmentDetailsEditPage({
           <option value="Shared room">Shared room</option>
           {/* Add more options as needed */}
         </select>
+        <p>Guests max:</p>
         <input
           type="text"
           name="accommodates"
           value={editableProfile.accommodates}
           onChange={handleChange}
         />
+        <p>Bathrooms:</p>
         <input
           type="text"
           name="bathrooms"
           value={editableProfile.bathrooms}
           onChange={handleChange}
         />
+        <p>Bedrooms:</p>
         <input
           type="text"
           name="bedrooms"
           value={editableProfile.bedrooms}
           onChange={handleChange}
         />
+        <p>Beds:</p>
         <input
           type="text"
           name="beds"
           value={editableProfile.beds}
           onChange={handleChange}
         />
+        <p>Price:</p>
         <input
           type="text"
           name="price"
           value={editableProfile.price}
           onChange={handleChange}
         />
+        <p>Cleaning fee:</p>
         <input
           type="text"
           name="cleaning_fee"
           value={editableProfile.cleaning_fee}
           onChange={handleChange}
         />
+        <p>Review scores rating:</p>
         <input
           type="text"
           name="review_scores_rating"
           value={editableProfile.review_scores_rating}
           onChange={handleChange}
         />
+        <p>Cancellation Policy:</p>
         <select
           name="cancellation_policy"
           value={editableProfile.cancellation_policy}
@@ -190,12 +204,16 @@ export default function ApartmentDetailsEditPage({
           <option value="strict">Strict</option>
           {/* Add more options as needed */}
         </select>
-        <button>
-          <Link to={`/apartment/${apartmentId}/edit`}> Edit </Link>
-        </button>
-        <Link to={`/apartment/${apartmentId}`}>Back</Link>
-      </div>
+        
+        
+        
+      
       <button type="submit">submit</button>
+
+      <button>
+        <Link to={`/apartment/${apartmentId}`}>Back</Link>
+        </button>
+        </div>
     </form>
   );
 }
