@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 export default function ApartmentDetailsEditPage({
   apartments,
@@ -11,7 +11,7 @@ export default function ApartmentDetailsEditPage({
   );
   if (!apartment.neighbourhood) apartment.neighbourhood = "";
   const [editableProfile, setEditableProfile] = useState(apartment);
-
+  const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setEditableProfile({
@@ -27,6 +27,7 @@ export default function ApartmentDetailsEditPage({
       prev[indexOfApartment] = editableProfile;
       return prev;
     });
+    navigate(-1);
   };
   return (
     <form onSubmit={handleSubmit}>

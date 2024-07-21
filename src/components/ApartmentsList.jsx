@@ -18,8 +18,10 @@ function ApartmentsList({ apartments, setApartments }) {
     }
   };
 
-  // Function to delete an apartment from the list
+  // Function to delete an apartment from the apartments nad favouriteslist
   const deleteApartment = (apartmentId) => {
+    
+    // create list of all other apartments
     const filteredApartments = apartments.filter(
       (apt) => apt.id !== apartmentId
     );
